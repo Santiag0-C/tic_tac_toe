@@ -7,7 +7,8 @@ class Player():
         self.symbol = symbol
 
     def getMove(self, game):
-        pass
+        position = random.choice(game.avilable_moves())
+        return position
 
 class CpmpPlayer(Player):#
     def __init__(self, simbol):
@@ -21,4 +22,7 @@ class Humanplayer(Player):
         super().__init__(symbol)
     
     def getMove(self, game):
-        pass
+        valid_pos = False
+        val = None
+        while not valid_pos:
+            position = input(self.symbol)
