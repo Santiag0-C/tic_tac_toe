@@ -7,9 +7,10 @@ class Player():
         self.symbol = symbol
 
     def getMove(self, game):
-        pass
+        position = random.choice(game.avilable_moves())
+        return position
 
-class CpmpPlayer(Player):#
+class CompPlayer(Player):#
     def __init__(self, simbol):
         super().__init__(symbol)
     
@@ -21,4 +22,16 @@ class Humanplayer(Player):
         super().__init__(symbol)
     
     def getMove(self, game):
-        pass
+        valid_pos = False
+        val = None
+        while not valid_pos:
+            position = input(self.symbol + '\'s Turn input move (0-9):')
+            try:
+                val = int(position)
+                if val not in game.avilable_moves():
+                    raise ValueError
+                valid_pos = True
+            except ValueError:
+                print('invalid square. Try again')
+        return val
+
