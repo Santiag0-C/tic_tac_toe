@@ -10,7 +10,7 @@ class Player():
         position = random.choice(game.avilable_moves())
         return position
 
-class CpmpPlayer(Player):#
+class CompPlayer(Player):#
     def __init__(self, simbol):
         super().__init__(symbol)
     
