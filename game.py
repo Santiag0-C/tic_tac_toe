@@ -68,7 +68,6 @@ def play(game, x_player, o_player, print_game=True):
             space = o_player.get_move(game)
         else:
             space = x_player.get_move(game)
-    
         if game.make_move(space, letter):
             if print_game:
                 print(letter + f' make a move to space {space}')

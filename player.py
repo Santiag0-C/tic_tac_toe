@@ -15,13 +15,14 @@ class CompPlayer(Player):#
         super().__init__(symbol)
     
     def get_move(self, game):
-        pass
+        space = random.choice(game.avilable_moves())
+        return space
     
 class Humanplayer(Player):
     def __init__(self, symbol):
         super().__init__(symbol)
     
-    def getMove(self, game):
+    def get_move(self, game):
         valid_pos = False
         val = None
         while not valid_pos:
