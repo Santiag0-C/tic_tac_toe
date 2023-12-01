@@ -26,7 +26,7 @@ class TicTacToe:
     def empty_space(self):
         return ' ' in self.board
 
-    def num_empty_spaces():
+    def num_empty_spaces(self):
         return self.board.count(' ')
         # return len(self.avilable_moves())
 
@@ -40,8 +40,6 @@ class TicTacToe:
     
     def winner(self, square, letter):
         row_index = square // 3
-        print(square)
-        print(square%3)
         row = self.board[row_index*3 : (row_index+1)*3]
         if all([spot == letter for spot in row]):
             return True
@@ -53,10 +51,10 @@ class TicTacToe:
 
         if square % 2 == 0:
             diagonal1 = [self.board[i] for i in [0, 4, 8]]
-            if all(spot == letter for spot in [0, 4, 8]):
+            if all([spot == letter for spot in diagonal1]):
                 return True
             diagonal2 = [self.board[i] for i in [2, 4, 6]]
-            if all([spot == letter for spot in [2, 4, 6]]):
+            if all([spot == letter for spot in diagonal2]):
                 return True
 
         return False

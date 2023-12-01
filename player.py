@@ -26,9 +26,9 @@ class Humanplayer(Player):
         valid_pos = False
         val = None
         while not valid_pos:
-            position = input(self.symbol + '\'s Turn input move (0-9):')
+            square = input(self.symbol + '\'s Turn input move (0-9):')
             try:
-                val = int(position)
+                val = int(square)
                 if val not in game.avilable_moves():
                     raise ValueError
                 valid_pos = True
