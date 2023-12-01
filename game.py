@@ -40,6 +40,8 @@ class TicTacToe:
     
     def winner(self, square, letter):
         row_index = square // 3
+        print(square)
+        print(square%3)
         row = self.board[row_index*3 : (row_index+1)*3]
         if all([spot == letter for spot in row]):
             return True
@@ -51,7 +53,7 @@ class TicTacToe:
 
         if square % 2 == 0:
             diagonal1 = [self.board[i] for i in [0, 4, 8]]
-            if all([spot == letter for spot in [0, 4, 8]]):
+            if all(spot == letter for spot in [0, 4, 8]):
                 return True
             diagonal2 = [self.board[i] for i in [2, 4, 6]]
             if all([spot == letter for spot in [2, 4, 6]]):
@@ -76,7 +78,7 @@ def play(game, x_player, o_player, print_game=True):
 
             if game.current_winner:
                 if print_game:
-                    print(letter, + 'Wins!!!')
+                    print(letter + ' Wins!!!')
                 return letter
 
             letter = 'O' if letter == 'X' else 'X'
