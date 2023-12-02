@@ -12,7 +12,7 @@ class TicTacToe:
         
     @staticmethod
     def print_board_nums():
-        number_board = [[str(i) for i in range(j*3, (j+1)*3)] for i in range(3)]
+        number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
         for row in number_board:
             print('| ' + ' | '.join(row) + ' |')               
 
@@ -26,7 +26,7 @@ class TicTacToe:
     def empty_space(self):
         return ' ' in self.board
 
-    def num_empty_spaces():
+    def num_empty_spaces(self):
         return self.board.count(' ')
         # return len(self.avilable_moves())
 
@@ -51,10 +51,10 @@ class TicTacToe:
 
         if square % 2 == 0:
             diagonal1 = [self.board[i] for i in [0, 4, 8]]
-            if all([spot == letter for spot in [0, 4, 8]]):
+            if all([spot == letter for spot in diagonal1]):
                 return True
             diagonal2 = [self.board[i] for i in [2, 4, 6]]
-            if all([spot == letter for spot in [2, 4, 6]]):
+            if all([spot == letter for spot in diagonal2]):
                 return True
 
         return False
@@ -64,20 +64,22 @@ def play(game, x_player, o_player, print_game=True):
 
     letter = 'X'
     while game.empty_space():
+
         if letter == 'O':
             space = o_player.get_move(game)
         else:
-            space = x_player_get_move(game)
-    
+            space = x_player.get_move(game)
         if game.make_move(space, letter):
             if print_game:
                 print(letter + f' make a move to space {space}')
+                game.print_board_nums() if letter == 'O' else None
+                print('\n')
                 game.print_bord()
                 print('\n')
 
             if game.current_winner:
                 if print_game:
-                    print(letter, + 'Wins!!!')
+                    print(letter + ' Wins!!!')
                 return letter
 
             letter = 'O' if letter == 'X' else 'X'

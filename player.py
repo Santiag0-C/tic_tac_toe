@@ -11,23 +11,25 @@ class Player():
         return position
 
 class CompPlayer(Player):#
-    def __init__(self, simbol):
+    def __init__(self, symbol):
         super().__init__(symbol)
     
     def get_move(self, game):
-        pass
+        space = random.choice(game.avilable_moves())
+        return space
     
 class Humanplayer(Player):
     def __init__(self, symbol):
         super().__init__(symbol)
     
-    def getMove(self, game):
+    def get_move(self, game):
         valid_pos = False
         val = None
         while not valid_pos:
-            position = input(self.symbol + '\'s Turn input move (0-9):')
+            square = input(self.symbol + '\'s Turn input move (0-9):')
+
             try:
-                val = int(position)
+                val = int(square)
                 if val not in game.avilable_moves():
                     raise ValueError
                 valid_pos = True
