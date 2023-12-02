@@ -64,6 +64,7 @@ def play(game, x_player, o_player, print_game=True):
 
     letter = 'X'
     while game.empty_space():
+
         if letter == 'O':
             space = o_player.get_move(game)
         else:
@@ -71,6 +72,8 @@ def play(game, x_player, o_player, print_game=True):
         if game.make_move(space, letter):
             if print_game:
                 print(letter + f' make a move to space {space}')
+                game.print_board_nums() if letter == 'O' else None
+                print('\n')
                 game.print_bord()
                 print('\n')
 
