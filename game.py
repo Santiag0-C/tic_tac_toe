@@ -31,6 +31,8 @@ class TicTacToe:
         # return len(self.avilable_moves())
 
     def make_move(self, space, letter):
+        print(self.board)
+        #self.board it --->  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         if self.board[space] == ' ':
             self.board[space] = letter
             if self.winner(space, letter):
@@ -39,6 +41,9 @@ class TicTacToe:
         return False
     
     def winner(self, square, letter):
+        #cuantas vzes el 3 entra en el nummero que escojiste
+        #1//3 = 0
+        #6//3 = 2
         row_index = square // 3
         row = self.board[row_index*3 : (row_index+1)*3]
         if all([spot == letter for spot in row]):
@@ -92,5 +97,5 @@ def play(game, x_player, o_player, print_game=True):
 if __name__ == '__main__':
     x_player = Humanplayer('X')
     o_player = CompPlayer('O')
-    t = TicTacToe()
-    play(t, x_player, o_player, print_game=True)
+    game = TicTacToe()
+    play(game, x_player, o_player, print_game=True)
